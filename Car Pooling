@@ -1,0 +1,10 @@
+class Solution:
+    def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
+        H=[]
+        for p,s,e in trips:
+            heapq.heappush(H,(s,p))
+            heapq.heappush(H,(e,-p))
+        while capacity>=0 and H:
+            capacity-=heapq.heappop(H)[1]
+        return len(H)==0
+        
